@@ -104,12 +104,12 @@ def train_model(dataset, paths, device):
         # 保存历史记录并更新进度条
         history.save_history()
         mean_train_loss = history.get_mean_train_error(reset=True)
-        mean_valid_loss = history.get_mean_valid_error(reset=True)
         progbar.update_valid_step()
-        progbar.write_summary(mean_train_loss, mean_valid_loss)
+        progbar.write_summary(mean_train_loss)
 
     # 保存最终模型
-    model_path = os.path.join(paths["models"], f"msinet_{dataset.name}_{device}.pth")
+    current_path = os.path.dirname(os.path.realpath(__file__))
+    model_path = os.path.join(current_path, f"msinet_salicon_model.pth")
     torch.save(model.state_dict(), model_path)
 
     print("训练完成！")

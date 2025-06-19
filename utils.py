@@ -63,26 +63,26 @@ class History:
 
     def save_history(self):
         mean_train_loss = self.get_mean_train_error(False)
-        mean_valid_loss = self.get_mean_valid_error(False)
+        # mean_valid_loss = self.get_mean_valid_error(False)
 
         self.train_history.append(mean_train_loss)
-        self.valid_history.append(mean_valid_loss)
+        # self.valid_history.append(mean_valid_loss)
 
         os.makedirs(self._path, exist_ok=True)
 
         with open(self._path + "train_%s_%s.txt" % self._id, "a") as file:
             file.write("%f\n" % self.train_history[-1])
 
-        with open(self._path + "valid_%s_%s.txt" % self._id, "a") as file:
-            file.write("%f\n" % self.valid_history[-1])
+        # with open(self._path + "valid_%s_%s.txt" % self._id, "a") as file:
+        #     file.write("%f\n" % self.valid_history[-1])
 
-        if len(self.train_history) > 1:
+        if len(self.train_history) >= 1:
             axes = plt.figure().gca()
 
             x_range = np.arange(1, len(self.train_history) + 1)
 
             plt.plot(x_range, self.train_history, label="train", linewidth=2)
-            plt.plot(x_range, self.valid_history, label="valid", linewidth=2)
+            # plt.plot(x_range, self.valid_history, label="valid", linewidth=2)
 
             plt.legend()
             plt.xlabel("epochs")
@@ -146,17 +146,17 @@ class Progbar:
     def update_valid_step(self):
         self._valid_time = time.time() - self._start_time - self._train_time
 
-    def write_summary(self, mean_train_loss, mean_valid_loss):
+    def write_summary(self, mean_train_loss):
         train_time = str(timedelta(seconds=np.ceil(self._train_time)))
-        valid_time = str(timedelta(seconds=np.ceil(self._valid_time)))
+        # valid_time = str(timedelta(seconds=np.ceil(self._valid_time)))
 
         train_information = (mean_train_loss, train_time)
-        valid_information = (mean_valid_loss, valid_time)
+        # valid_information = (mean_valid_loss, valid_time)
 
         train_output = "\n\tTrain loss: %.6f (%s)" % train_information
-        valid_output = "\tValid loss: %.6f (%s)" % valid_information
+        # valid_output = "\tValid loss: %.6f (%s)" % valid_information
 
         print(train_output, flush=True)
-        print(valid_output, flush=True)
+        # print(valid_output, flush=True)
 
         self._flush()
