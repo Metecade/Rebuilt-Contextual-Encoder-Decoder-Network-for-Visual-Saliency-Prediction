@@ -35,7 +35,7 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/your-repo-name.git
+git clone git@github.com:Metecade/Rebuilt-Contextual-Encoder-Decoder-Network-for-Visual-Saliency-Prediction.git
 cd your-repo-name
 
 # 安装依赖包
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 ```python
 PARAMS = {
     "n_epochs": 10,          # 训练轮数
-    "batch_size": 4,         # 批次大小
+    "batch_size": 1,         # 批次大小
     "learning_rate": 1e-5,   # 学习率
     "device": "cuda"         # 设备选择: "cuda" 或 "cpu"
 }
@@ -75,11 +75,7 @@ PARAMS = {
 ### 训练模型
 
 ```bash
-# 使用默认参数训练
 python main.py train
-
-# 使用自定义数据集路径
-python main.py train -p /path/to/your/data
 ```
 
 ### 测试模型
@@ -184,8 +180,7 @@ class KLDivLossWrapper(nn.Module):
 │   ├── salicon/         # SALICON数据集
 │   └── sence/           # 测试数据
 └── results/             # 训练结果
-    ├── history/         # 训练历史
-    └── images/          # 结果图像
+    └── history/         # 训练历史
 ```
 
 ## ⚠️ 已知限制
