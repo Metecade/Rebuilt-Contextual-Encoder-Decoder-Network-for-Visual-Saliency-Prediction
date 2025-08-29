@@ -1,0 +1,24 @@
+# 深度学习框架
+torch>=1.9.0
+torchvision>=0.10.0
+
+# 图像处理
+Pillow>=8.0.0
+opencv-python>=4.5.0
+
+# 数据处理和科学计算
+numpy>=1.21.0
+matplotlib>=3.3.0
+
+# 数据集下载工具
+gdown>=4.0.0
+
+# 工具包
+tqdm>=4.60.0
+
+# 系统和I/O
+scipy>=1.7.0
+
+# 可选：CUDA支持(如果有GPU)
+# 请根据你的CUDA版本和PyTorch版本选择合适的torchvision版本
+# 访问 https://pytorch.org/ 获取适合你系统的安装命令
